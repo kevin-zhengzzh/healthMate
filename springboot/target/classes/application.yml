@@ -1,0 +1,29 @@
+server:
+  port: 9090
+  tomcat:
+    max-swallow-size: -1          # 取消吞咽限制（防止大文件被丢弃）
+    max-http-form-post-size: -1   # 取消表单 POST 大小限制
+# database config
+spring:
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 'root'
+      url: jdbc:mysql://localhost:3306/system?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2b8&allowPublicKeyRetrieval=true
+
+    servlet:
+      multipart:
+        max-file-size: 20MB         # 单文件最大 20MB（按需改）
+        max-request-size: 20MB      # 整个请求最大 20MB（按需改）
+
+
+# config mybatis entity and xml mapping
+mybatis:
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+      map-underscore-to-camel-case: true
+    mapper-locations: classpath:mapper/*.xml
+
+fileBaseUrl: http://localhost:${server.port}
+
+

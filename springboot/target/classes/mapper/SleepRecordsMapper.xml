@@ -1,0 +1,75 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.SleepRecordsMapper">
+
+    <select id="selectAll" resultType="com.example.entity.SleepRecords">
+        select sleep_records.*, user.name as userName from `sleep_records`
+        left join user on sleep_records.user_id = user.id
+        <where>
+            <if test="date != null"> and sleep_records.`date` like concat('%', #{date}, '%')</if>
+            <if test="userId != null"> and sleep_records.`user_id`= #{userId}</if>
+        </where>
+        order by sleep_records.id desc
+    </select>
+
+    <delete id="deleteById">
+        delete from `sleep_records`
+        where id = #{id}
+    </delete>
+
+    <!-- insert into sleep_records (username, password, ...) values ('sleep_records', 'sleep_records', ...) -->
+    <insert id="insert" parameterType="com.example.entity.SleepRecords" useGeneratedKeys="true">
+        insert into `sleep_records`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="sleepTime != null">sleep_time,</if>
+            <if test="wakeupTime != null">wakeup_time,</if>
+            <if test="sleepDuration != null">sleep_duration,</if>
+            <if test="sleepQuality != null">sleep_quality,</if>
+            <if test="date != null">date,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="sleepTime != null">#{sleepTime},</if>
+            <if test="wakeupTime != null">#{wakeupTime},</if>
+            <if test="sleepDuration != null">#{sleepDuration},</if>
+            <if test="sleepQuality != null">#{sleepQuality},</if>
+            <if test="date != null">#{date},</if>
+        </trim>
+
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.SleepRecords">
+        update `sleep_records`
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="sleepTime != null">
+                sleep_time = #{sleepTime},
+            </if>
+            <if test="wakeupTime != null">
+                wakeup_time = #{wakeupTime},
+            </if>
+            <if test="sleepDuration != null">
+                sleep_duration = #{sleepDuration},
+            </if>
+            <if test="sleepQuality != null">
+                sleep_quality = #{sleepQuality},
+            </if>
+            <if test="date != null">
+                date = #{date},
+            </if>
+        </set>
+        where id = #{id}
+
+    </update>
+
+</mapper>

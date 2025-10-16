@@ -1,0 +1,85 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.BodyRecordsMapper">
+
+    <select id="selectAll" resultType="com.example.entity.BodyRecords">
+        select body_records.*, user.name as userName from `body_records`
+        left join user on body_records.user_id = user.id
+        <where>
+            <if test="date != null"> and body_records.`date` like concat('%', #{date}, '%')</if>
+            <if test="userId != null"> and body_records.`user_id`= #{userId}</if>
+        </where>
+        order by body_records.id desc
+    </select>
+
+    <delete id="deleteById">
+        delete from `body_records`
+        where id = #{id}
+    </delete>
+
+    <!-- insert into body_records (username, password, ...) values ('body_records', 'body_records', ...) -->
+    <insert id="insert" parameterType="com.example.entity.BodyRecords" useGeneratedKeys="true">
+        insert into `body_records`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="height != null">height,</if>
+            <if test="weight != null">weight,</if>
+            <if test="lowPressure != null">low_pressure,</if>
+            <if test="highPressure != null">high_pressure,</if>
+            <if test="bloodSugar != null">blood_sugar,</if>
+            <if test="heartRate != null">heart_rate,</if>
+            <if test="date != null">date,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="height != null">#{height},</if>
+            <if test="weight != null">#{weight},</if>
+            <if test="lowPressure != null">#{lowPressure},</if>
+            <if test="highPressure != null">#{highPressure},</if>
+            <if test="bloodSugar != null">#{bloodSugar},</if>
+            <if test="heartRate != null">#{heartRate},</if>
+            <if test="date != null">#{date},</if>
+        </trim>
+
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.BodyRecords">
+        update `body_records`
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="height != null">
+                height = #{height},
+            </if>
+            <if test="weight != null">
+                weight = #{weight},
+            </if>
+            <if test="lowPressure != null">
+                low_pressure = #{lowPressure},
+            </if>
+            <if test="highPressure != null">
+                high_pressure = #{highPressure},
+            </if>
+            <if test="bloodSugar != null">
+                blood_sugar = #{bloodSugar},
+            </if>
+            <if test="heartRate != null">
+                heart_rate = #{heartRate},
+            </if>
+            <if test="date != null">
+                date = #{date},
+            </if>
+        </set>
+        where id = #{id}
+
+    </update>
+
+</mapper>

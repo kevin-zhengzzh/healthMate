@@ -1,0 +1,77 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.SportsRecordsMapper">
+
+    <select id="selectAll" resultType="com.example.entity.SportsRecords">
+        select sports_records.*, user.name as userName from `sports_records`
+        left join user on sports_records.user_id = user.id
+        <where>
+            <if test="date != null"> and sports_records.`date` like concat('%', #{date}, '%')</if>
+            <if test="userId != null"> and sports_records.`user_id`= #{userId}</if>
+        </where>
+        order by sports_records.id desc
+    </select>
+
+    <delete id="deleteById">
+        delete from `sports_records`
+        where id = #{id}
+    </delete>
+
+    <!-- insert into sports_records (username, password, ...) values ('sports_records', 'sports_records', ...) -->
+    <insert id="insert" parameterType="com.example.entity.SportsRecords" useGeneratedKeys="true">
+        insert into `sports_records`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="type != null">type,</if>
+            <if test="during != null">during,</if>
+            <if test="distance != null">distance,</if>
+            <if test="calorie != null">calorie,</if>
+            <if test="date != null">date,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="type != null">#{type},</if>
+            <if test="during != null">#{during},</if>
+            <if test="distance != null">#{distance},</if>
+            <if test="calorie != null">#{calorie},</if>
+            <if test="date != null">#{date},</if>
+        </trim>
+
+
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.SportsRecords">
+        update `sports_records`
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="during != null">
+                during = #{during},
+            </if>
+            <if test="distance != null">
+                distance = #{distance},
+            </if>
+            <if test="calorie != null">
+                calorie = #{calorie},
+            </if>
+            <if test="date != null">
+                date = #{date},
+            </if>
+        </set>
+        where id = #{id}
+
+
+    </update>
+
+</mapper>

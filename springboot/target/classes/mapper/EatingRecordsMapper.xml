@@ -1,0 +1,71 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.EatingRecordsMapper">
+
+    <select id="selectAll" resultType="com.example.entity.EatingRecords">
+        select eating_records.*, user.name as userName from `eating_records`
+        left join user on eating_records.user_id = user.id
+        <where>
+            <if test="date != null"> and eating_records.`date` like concat('%', #{date}, '%')</if>
+            <if test="userId != null"> and eating_records.`user_id`= #{userId}</if>
+        </where>
+        order by eating_records.id desc
+    </select>
+
+    <delete id="deleteById">
+        delete from `eating_records`
+        where id = #{id}
+    </delete>
+
+    <!-- insert into eating_records (username, password, ...) values ('eating_records', 'eating_records', ...) -->
+    <insert id="insert" parameterType="com.example.entity.EatingRecords" useGeneratedKeys="true">
+        insert into `eating_records`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="foodsName != null">foods_name,</if>
+            <if test="intake != null">intake,</if>
+            <if test="calorie != null">calorie,</if>
+            <if test="date != null">date,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="foodsName != null">#{foodsName},</if>
+            <if test="intake != null">#{intake},</if>
+            <if test="calorie != null">#{calorie},</if>
+            <if test="date != null">#{date},</if>
+        </trim>
+
+
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.EatingRecords">
+        update `eating_records`
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="foodsName != null">
+                foods_name = #{foodsName},
+            </if>
+            <if test="intake != null">
+                intake = #{intake},
+            </if>
+            <if test="calorie != null">
+                calorie = #{calorie},
+            </if>
+            <if test="date != null">
+                date = #{date},
+            </if>
+        </set>
+        where id = #{id}
+
+    </update>
+
+</mapper>
