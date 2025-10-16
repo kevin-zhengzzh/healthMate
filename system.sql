@@ -39,16 +39,16 @@ CREATE TABLE `admin`  (
 DROP TABLE IF EXISTS `body_records`;
 CREATE TABLE `body_records`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `user_id` int NULL DEFAULT NULL COMMENT '用户ID',
-  `height` double NULL DEFAULT NULL COMMENT '身高',
-  `weight` double NULL DEFAULT NULL COMMENT '体重',
-  `low_pressure` double NULL DEFAULT NULL COMMENT '低压',
-  `high_pressure` double NULL DEFAULT NULL COMMENT '高压',
-  `blood_sugar` double NULL DEFAULT NULL COMMENT '血糖',
-  `heart_rate` double NULL DEFAULT NULL COMMENT '心率',
-  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '记录日期',
+  `user_id` int NULL DEFAULT NULL COMMENT 'user id',
+  `height` double NULL DEFAULT NULL COMMENT 'height',
+  `weight` double NULL DEFAULT NULL COMMENT 'weight',
+  `low_pressure` double NULL DEFAULT NULL COMMENT 'low pressure',
+  `high_pressure` double NULL DEFAULT NULL COMMENT 'high pressure',
+  `blood_sugar` double NULL DEFAULT NULL COMMENT 'blood sugar',
+  `heart_rate` double NULL DEFAULT NULL COMMENT 'heart rate',
+  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'record date',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '身体指标记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'body records' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for comment
@@ -56,14 +56,14 @@ CREATE TABLE `body_records`  (
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '内容',
-  `user_id` int NULL DEFAULT NULL COMMENT '用户ID',
-  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '时间',
-  `pid` int NULL DEFAULT NULL COMMENT '父级ID',
-  `fid` int NULL DEFAULT NULL COMMENT '关联模块ID',
-  `root_id` int NULL DEFAULT NULL COMMENT '根节点ID',
+  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'content',
+  `user_id` int NULL DEFAULT NULL COMMENT 'user id',
+  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'time',
+  `pid` int NULL DEFAULT NULL COMMENT 'parent id',
+  `fid` int NULL DEFAULT NULL COMMENT 'Associated module ID',
+  `root_id` int NULL DEFAULT NULL COMMENT 'root node id ',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '评论信息' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'comment' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for eating_records
@@ -71,13 +71,13 @@ CREATE TABLE `comment`  (
 DROP TABLE IF EXISTS `eating_records`;
 CREATE TABLE `eating_records`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `user_id` int NULL DEFAULT NULL COMMENT '用户id',
-  `foods_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '食物名称',
-  `intake` int NULL DEFAULT NULL COMMENT '摄入量',
-  `calorie` int NULL DEFAULT NULL COMMENT '卡路里',
-  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '记录日期',
+  `user_id` int NULL DEFAULT NULL COMMENT 'user id',
+  `foods_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'foods name',
+  `intake` int NULL DEFAULT NULL COMMENT 'intake',
+  `calorie` int NULL DEFAULT NULL COMMENT 'calorie',
+  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'record date',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '饮食记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'eating records' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for forum
@@ -85,16 +85,16 @@ CREATE TABLE `eating_records`  (
 DROP TABLE IF EXISTS `forum`;
 CREATE TABLE `forum`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '标题',
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '简介',
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '封面',
-  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '内容',
-  `user_id` int NULL DEFAULT NULL COMMENT '用户ID',
-  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '发帖时间',
-  `read_count` int NULL DEFAULT NULL COMMENT '浏览量',
-  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '审核状态',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'title',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'description',
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'cover',
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT 'content',
+  `user_id` int NULL DEFAULT NULL COMMENT 'user id',
+  `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'post time',
+  `read_count` int NULL DEFAULT NULL COMMENT 'read count',
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'status',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '帖子信息' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'forum' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for notice
@@ -114,14 +114,14 @@ CREATE TABLE `notice`  (
 DROP TABLE IF EXISTS `sleep_records`;
 CREATE TABLE `sleep_records`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `user_id` int NULL DEFAULT NULL COMMENT '用户ID',
-  `sleep_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '入睡时间',
-  `wakeup_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '起床时间',
-  `sleep_duration` double NULL DEFAULT NULL COMMENT '睡眠时长',
-  `sleep_quality` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '睡眠质量',
-  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '记录日期',
+  `user_id` int NULL DEFAULT NULL COMMENT 'user id',
+  `sleep_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'sleep time',
+  `wakeup_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'wakeup time',
+  `sleep_duration` double NULL DEFAULT NULL COMMENT 'sleep duration',
+  `sleep_quality` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'sleep quality',
+  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'record date',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '睡眠记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'sleep records' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for sports_records
@@ -129,14 +129,14 @@ CREATE TABLE `sleep_records`  (
 DROP TABLE IF EXISTS `sports_records`;
 CREATE TABLE `sports_records`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `user_id` int NULL DEFAULT NULL COMMENT '用户ID',
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '运动类型',
-  `during` int NULL DEFAULT NULL COMMENT '运动时长',
-  `distance` double NULL DEFAULT NULL COMMENT '运动距离',
-  `calorie` double NULL DEFAULT NULL COMMENT '卡路里',
-  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '记录日期',
+  `user_id` int NULL DEFAULT NULL COMMENT 'user_id',
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'sports type',
+  `during` int NULL DEFAULT NULL COMMENT 'sports duration',
+  `distance` double NULL DEFAULT NULL COMMENT 'sports distance',
+  `calorie` double NULL DEFAULT NULL COMMENT 'calorie',
+  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'record date',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '运动记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'sports records' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for user
