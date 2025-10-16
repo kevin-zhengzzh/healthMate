@@ -146,6 +146,7 @@ const update = () =>{
       ElMessage.success("success")
       data.formVisible=false
 
+      // If the updated user is currently logged-in, write the new avatar back to the local device and notify the header to refresh
       // 如果更新的是当前登录用户，把新头像写回本地并通知头部刷新
       try {
         const me = JSON.parse(localStorage.getItem('xm-user') || '{}');

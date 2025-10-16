@@ -3,20 +3,18 @@ package com.example.entity;
 import java.util.List;
 
 public class Comment {
-
-    /**ID */
     private Integer id;
-    /**内容 */
     private String content;
-    /**用户ID */
     private Integer userId;
-    /**时间 */
     private String time;
-    /**父级ID */
+    /**父级ID
+     * parent id */
     private Integer pid;
-    /**关联模块ID */
+    /**关联模块ID
+     * Associated module ID */
     private Integer fid;
-    /**根节点ID */
+    /**根节点ID
+     *root node id */
     private Integer rootId;
     private String forumTitle;
     private String userName;

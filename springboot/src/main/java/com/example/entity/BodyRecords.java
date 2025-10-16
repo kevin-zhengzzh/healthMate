@@ -1,24 +1,14 @@
 package com.example.entity;
 
 public class BodyRecords {
-
-    /**ID */
     private Integer id;
-    /**用户ID */
     private Integer userId;
-    /**身高 */
     private Double height;
-    /**体重 */
     private Double weight;
-    /**低压 */
     private Double lowPressure;
-    /**高压 */
     private Double highPressure;
-    /**血糖 */
     private Double bloodSugar;
-    /**心率 */
     private Double heartRate;
-    /**记录日期 */
     private String date;
     private String userName;
 

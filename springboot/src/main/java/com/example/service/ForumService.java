@@ -27,7 +27,8 @@ private ForumMapper forumMapper;
 
     public void updateById(Forum forum) {
         Account currentUser = TokenUtils.getCurrentUser();
-        //用户编辑了内容，设置为待审核状态
+        // The user edited the content and set it to the pending review status
+        // 用户编辑了内容，设置为待审核状态
         if (RoleEnum.USER.name().equals(currentUser.getRole())){
             forum.setStatus("Under review");
         }

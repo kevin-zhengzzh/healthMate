@@ -1,18 +1,11 @@
 package com.example.entity;
 
 public class EatingRecords {
-
-    /**ID */
     private Integer id;
-    /**用户 */
     private Integer userId;
-    /**食物名称 */
     private String foodsName;
-    /**摄入量 */
     private Integer intake;
-    /**卡路里 */
     private Integer calorie;
-    /**记录日期 */
     private String date;
     private String userName;
 

@@ -16,7 +16,7 @@ public class CommentService {
 private CommentMapper commentMapper;
     public void add(Comment comment) {
         comment.setTime(DateUtil.now());
-        if (comment.getPid() != null) { //说明是子评论
+        if (comment.getPid() != null) { // The description is a sub-comment (说明是子评论)
             Integer pid = comment.getPid();
             Comment parentComment = commentMapper.selectById(pid);
             comment.setRootId(parentComment.getRootId());
@@ -38,10 +38,10 @@ private CommentMapper commentMapper;
         commentMapper.deleteById(id);
     }
 
-    //递归删除
+    // Recursive deletion 递归删除
     public void deepDelete(Integer pid) {
         commentMapper.deleteById(pid);
-        List<Comment> commentList = commentMapper.selectByPid(pid); //找到所有子级评论
+        List<Comment> commentList = commentMapper.selectByPid(pid); // Recursive deletion 找到所有子级评论
         for (Comment comment : commentList) {
             deepDelete(comment.getId());
         }

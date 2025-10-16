@@ -118,7 +118,7 @@ import {reactive} from "vue";
 import {ElMessage, ElMessageBox} from "element-plus";
 import request from '@/utils/request.js'
 import {Delete, Edit} from "@element-plus/icons-vue";
-import '@wangeditor/editor/dist/css/style.css' // 引入 css
+import '@wangeditor/editor/dist/css/style.css' // import css
 import {onBeforeUnmount, ref, shallowRef} from "vue";
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
 import { i18nChangeLanguage } from '@wangeditor/editor'
@@ -163,29 +163,31 @@ const handleFileUpload = (res) => {
 }
 
 i18nChangeLanguage('en')
-/* wangEditor5 初始化开始 */
-const editorRef = shallowRef()  // 编辑器实例，必须用 shallowRef
+/* wangEditor5 init start */
+const editorRef = shallowRef()  // Editor instance, must use shallowRef 编辑器实例，必须用 shallowRef
 const mode = 'default'
 const editorConfig = { MENU_CONF: {} }
-// 图片上传配置
+// Image upload configuration 图片上传配置
 editorConfig.MENU_CONF['uploadImage'] = {
   headers: {
     token: data.user.token,
   },
-  server: baseUrl + '/files/wang/upload',  // 服务端图片上传接口
-  fieldName: 'file'  // 服务端图片上传接口参数
+  server: baseUrl + '/files/wang/upload',  // Server-side image upload interface 服务端图片上传接口
+  fieldName: 'file'  // Server-side image upload interface parameters 服务端图片上传接口参数
 }
-// 组件销毁时，也及时销毁编辑器，否则可能会造成内存泄漏
+/**
+ When the component is destroyed, the editor is also destroyed in time, otherwise it may cause memory leaks
+ 组件销毁时，也及时销毁编辑器，否则可能会造成内存泄漏
+*/
 onBeforeUnmount(() => {
   const editor = editorRef.value
   if (editor == null) return
   editor.destroy()
 })
-// 记录 editor 实例，重要！
 const handleCreated = (editor) => {
   editorRef.value = editor
 }
-/* wangEditor5 初始化结束 */
+/* wangEditor5 innit end */
 
 const view = (content) => {
   data.content = content
@@ -236,7 +238,7 @@ const update = () =>{
       ElMessage.success("Success")
       data.formVisible=false
 
-      // 如果更新的是当前登录用户，把新头像写回本地并通知头部刷新
+
       try {
         const me = JSON.parse(localStorage.getItem('xm-user') || '{}');
         if (me?.id && data.form?.id && me.id === data.form.id && data.form.avatar) {

@@ -1,20 +1,12 @@
 package com.example.entity;
 
 public class SleepRecords {
-
-    /**ID */
     private Integer id;
-    /**用户ID */
     private Integer userId;
-    /**入睡时间 */
     private String sleepTime;
-    /**起床时间 */
     private String wakeupTime;
-    /**睡眠时长 */
     private Double sleepDuration;
-    /**睡眠质量 */
     private String sleepQuality;
-    /**记录日期 */
     private String date;
     private String userName;
 

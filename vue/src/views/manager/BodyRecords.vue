@@ -163,7 +163,8 @@ const update = () =>{
       ElMessage.success("success")
       data.formVisible=false
 
-      // 如果更新的是当前登录用户，把新头像写回本地并通知头部刷新
+      /** If the user being updated is the currently logged-in user,
+       write the new avatar back to the local computer and notify the user to refresh the header.*/
       try {
         const me = JSON.parse(localStorage.getItem('xm-user') || '{}');
         if (me?.id && data.form?.id && me.id === data.form.id && data.form.avatar) {
@@ -172,7 +173,7 @@ const update = () =>{
           window.dispatchEvent(new Event('avatar-updated'));   // 通知 Manager.vue
         }
       } catch {}
-      
+
       load()
     }
   })

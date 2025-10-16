@@ -1,22 +1,16 @@
 package com.example.entity;
 
 public class Forum {
-
-    /**ID */
     private Integer id;
-    /**标题 */
     private String title;
-    /**简介 */
     private String description;
-    /**封面 */
+    /**cover */
     private String img;
-    /**内容 */
     private String content;
-    /**用户ID */
     private Integer userId;
-    /**发帖时间 */
+    /**发帖时间
+     * post time */
     private String time;
-    /**浏览量 */
     private Integer readCount;
     private String userName;
     private String status;

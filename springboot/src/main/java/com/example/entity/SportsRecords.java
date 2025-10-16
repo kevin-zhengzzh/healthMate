@@ -1,20 +1,12 @@
 package com.example.entity;
 
 public class SportsRecords {
-
-    /**ID */
     private Integer id;
-    /**用户ID */
     private Integer userId;
-    /**运动类型 */
     private String type;
-    /**运动时长 */
     private Integer during;
-    /**运动距离 */
     private Double distance;
-    /**卡路里 */
     private Double calorie;
-    /**记录日期 */
     private String date;
 
     private String userName;

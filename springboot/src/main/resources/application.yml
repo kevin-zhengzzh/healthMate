@@ -1,8 +1,8 @@
 server:
   port: 9090
   tomcat:
-    max-swallow-size: -1          # 取消吞咽限制（防止大文件被丢弃）
-    max-http-form-post-size: -1   # 取消表单 POST 大小限制
+    max-swallow-size: -1          # 取消吞咽限制（防止大文件被丢弃）Remove swallowing restrictions (to prevent large files from being discarded)
+    max-http-form-post-size: -1   # 取消表单 POST 大小限制 Remove the POST size limit for forms
 # database config
 spring:
     datasource:
@@ -13,8 +13,8 @@ spring:
 
     servlet:
       multipart:
-        max-file-size: 20MB         # 单文件最大 20MB（按需改）
-        max-request-size: 20MB      # 整个请求最大 20MB（按需改）
+        max-file-size: 20MB         # 单文件最大 20MB（按需改）Single file maximum 20MB (subject to change as needed)
+        max-request-size: 20MB      # 整个请求最大 20MB（按需改）The entire request is up to 20MB (subject to change as needed)
 
 
 # config mybatis entity and xml mapping

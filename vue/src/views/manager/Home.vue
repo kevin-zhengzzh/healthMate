@@ -100,8 +100,8 @@ const lineOption1 = {
       type: 'line',
       smooth: true,
       areaStyle: {
-        opacity: 0.8, // 阴影的透明度
-        color: 'rgb(185,190,255)' // 阴影的颜色和透明度
+        opacity: 0.8, // Shadow transparency 阴影的透明度
+        color: 'rgb(185,190,255)' // The color and transparency of the shadow 阴影的颜色和透明度
       },
       markPoint: {
         data: [
@@ -119,8 +119,8 @@ const lineOption1 = {
       type: 'line',
       smooth: true,
       areaStyle: {
-        opacity: 0.8, // 阴影的透明度
-        color: 'rgb(185,190,255)' // 阴影的颜色和透明度
+        opacity: 0.8,
+        color: 'rgb(185,190,255)'
       },
       markPoint: {
         data: [
@@ -165,8 +165,8 @@ const lineOption2 = {
       type: 'line',
       smooth: true,
       areaStyle: {
-        opacity: 0.8, // 阴影的透明度
-        color: 'rgb(185,190,255)' // 阴影的颜色和透明度
+        opacity: 0.8,
+        color: 'rgb(185,190,255)'
       },
       markPoint: {
         data: [
@@ -187,11 +187,12 @@ const data = reactive({
   record: {},
 })
 
+// Wait until all elements on the page are loaded before setting the echarts chart
 // 等页面所有元素加载完成后再设置 echarts图表
 onMounted(() => {
   if (data.user.role === 'USER') {
-    // 请求数据  初始化图表
-    // 折线图
+    // Request data Initialize chart 请求数据  初始化图表
+    // line chart
     let lineDom1 = document.getElementById('line1')
     let lineChart1 = echarts.init(lineDom1)
     request.get('/selectLine1').then(res => {

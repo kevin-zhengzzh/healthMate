@@ -112,13 +112,12 @@ const update = () =>{
       ElMessage.success("success")
       data.formVisible=false
 
-      // 如果更新的是当前登录用户，把新头像写回本地并通知头部刷新
       try {
         const me = JSON.parse(localStorage.getItem('xm-user') || '{}');
         if (me?.id && data.form?.id && me.id === data.form.id && data.form.avatar) {
           const updated = { ...me, avatar: data.form.avatar };
           localStorage.setItem('xm-user', JSON.stringify(updated));
-          window.dispatchEvent(new Event('avatar-updated'));   // 通知 Manager.vue
+          window.dispatchEvent(new Event('avatar-updated'));   // notice Manager.vue
         }
       } catch {}
       
